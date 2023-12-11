@@ -156,6 +156,10 @@ async function testIPs(ipList) {
     const multiply = maxLatency <= 500 ? 1.5 : (maxLatency <= 1000 ? 1.2 : 1);
     var timeout = 1.5 * multiply * maxLatency;
     var chNo = 0;
+    var MaxofLatencies = 0;
+    const EachFetchLatency = [];
+    var RequestStartTime = 0;
+    var failedAttempts = 0;
     for (const ch of ['', '|', '/', '-', '\\']) {
       const timeoutId = setTimeout(() => {
         controller.abort();
@@ -176,14 +180,17 @@ async function testIPs(ipList) {
         document.getElementById('ip-latency').innerText = '';
       }
       try {
-        const response = await fetch(url, {
+        RequestStartTime = performance.now();
+        var response = await fetch(url, {
           signal: controller.signal,
         });
 
-        testResult++;
+          testResult++;
+      
       } catch (error) {
         if (error.name === "AbortError") {
           //
+          failedAttempts++;
         } else {
           testResult++;
         }
@@ -191,12 +198,12 @@ async function testIPs(ipList) {
       clearTimeout(timeoutId);
       chNo++;
     }
-
-    const latency = Math.floor((performance.now() - startTime) / 5);
-
-    if (testResult === 5 && latency <= maxLatency) {
+    var latency = Math.floor((performance.now() - RequestStartTime));
+    EachFetchLatency.push(latency);
+    MaxofLatencies = EachFetchLatency.length > 0 ? Math.max(...EachFetchLatency) : 0; // get the maximum latency or -1 if the array is empty
+    if (testResult === 5 && failedAttempts === 0 && MaxofLatencies <= maxLatency) {
       numberOfWorkingIPs++;
-      validIPs.push({ip: ip, latency: latency});
+      validIPs.push({ip: ip, latency: MaxofLatencies});
       const sortedArr = validIPs.sort((a, b) => a.latency - b.latency);
       const tableRows = sortedArr.map(obj => `
         <tr>
