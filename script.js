@@ -1,8 +1,8 @@
 var cfIPv4 = []
 var cfIPv4ToScan = []
-const noOfEachRange24 = 30
+const noOfEachRange24 = 255
 const client = new XMLHttpRequest();
-client.open('GET', 'https://raw.githubusercontent.com/vfarid/cf-ip-scanner/main/ipv4.txt');
+client.open('GET', 'https://raw.githubusercontent.com/MrMalekfar/cf-ip-scanner/main/ipv4.txt');
 client.onreadystatechange = function() {
   cfIPv4 = client.responseText.split("\n").map((cidr) => cidr.trim()).filter((cidr) => isCIDR(cidr));
   document.getElementById('btn-start').disabled = false;
@@ -26,7 +26,7 @@ let progressBar = document.getElementById('progress-bar');
 let progress = 0;
 let language = localStorage.getItem('lang') || 'fa'
 
-document.getElementById('max-ip').value = localStorage.getItem('max-ip') || 20;
+document.getElementById('max-ip').value = localStorage.getItem('max-ip') || 50;
 document.getElementById('max-latency').value = localStorage.getItem('max-latency') || 400;
 document.getElementById('ip-regex').value = localStorage.getItem('ip-regex');
 document.getElementById('ip-include').value = localStorage.getItem('ip-include');
