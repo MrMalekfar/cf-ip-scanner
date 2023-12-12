@@ -207,7 +207,7 @@ async function testIPs(ipList) {
       const sortedArr = validIPs.sort((a, b) => a.latency - b.latency);
       const tableRows = sortedArr.map(obj => `
         <tr>
-          <td></td>
+          <td>${obj.numberOfWorkingIPs}</td>
           <td>${obj.ip}</td>
           <td>${obj.latency}ms</td>
           <td>
