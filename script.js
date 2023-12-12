@@ -1,6 +1,6 @@
 var cfIPv4 = []
 var cfIPv4ToScan = []
-const noOfEachRange24 = 255
+const noOfEachRange24 = 90
 const client = new XMLHttpRequest();
 client.open('GET', 'https://raw.githubusercontent.com/MrMalekfar/cf-ip-scanner/main/ipv4.txt');
 client.onreadystatechange = function() {
