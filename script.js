@@ -203,7 +203,7 @@ async function testIPs(ipList) {
     MaxofLatencies = EachFetchLatency.length > 0 ? Math.max(...EachFetchLatency) : 0; // get the maximum latency or -1 if the array is empty
     if (testResult === 5 && failedAttempts === 0 && MaxofLatencies <= maxLatency) {
       numberOfWorkingIPs++;
-      validIPs.push({ip: ip, latency: MaxofLatencies});
+      validIPs.push({ip: ip, latency: MaxofLatencies, numberOfWorkingIPs: numberOfWorkingIPs});
       const sortedArr = validIPs.sort((a, b) => a.latency - b.latency);
       const tableRows = sortedArr.map(obj => `
         <tr>
