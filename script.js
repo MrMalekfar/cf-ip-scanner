@@ -240,6 +240,11 @@ async function testIPs(ipList) {
       <span class="lang-field lang-en text-danger fw-bold">Canceled!</span>  
     `;
   } else {
+    if (window.self !== window.top) {
+      copyAllToClipboard()
+      window.top.postMessage(validIPs.map(el => el.ip).join('\n'), '*');
+    }
+
     document.getElementById('test-no').innerHTML = `
       <span class="lang-field lang-fa text-success fw-bold">تمام شد.</span>
       <span class="lang-field lang-en text-success fw-bold">Done.</span>  
