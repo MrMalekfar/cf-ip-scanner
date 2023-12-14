@@ -181,7 +181,7 @@ async function testIPs(ipList) {
       }
       try {
         RequestStartTime = performance.now();
-        var response = await fetch(url, {
+        const response = await fetch(url, {
           signal: controller.signal,
         });
 
@@ -198,7 +198,7 @@ async function testIPs(ipList) {
       clearTimeout(timeoutId);
       chNo++;
     }
-    var latency = Math.floor((performance.now() - RequestStartTime));
+    const latency = Math.floor((performance.now() - RequestStartTime));
     EachFetchLatency.push(latency);
     MaxofLatencies = EachFetchLatency.length > 0 ? Math.max(...EachFetchLatency) : 0; // get the maximum latency or -1 if the array is empty
     if (testResult === 5 && failedAttempts === 0 && MaxofLatencies <= maxLatency) {
