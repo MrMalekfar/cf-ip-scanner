@@ -160,7 +160,7 @@ async function testIPs(ipList) {
     const EachFetchLatency = [];
     var RequestStartTime = 0;
     var failedAttempts = 0;
-    for (const ch of ['', '-', '--', '---', '----', '-----', '------', '-------', '--------', '---------']) {
+    for (const ch of ['', '-', '--', '---', '----', '-----', '------', '-------', '--------', , '\\']) {
       const timeoutId = setTimeout(() => {
         controller.abort();
       }, timeout);
@@ -204,7 +204,7 @@ async function testIPs(ipList) {
     }
 
     
-    if (testResult === 9 && failedAttempts === 0 && MaxofLatencies <= maxLatency) {
+    if (testResult === 10 && failedAttempts === 0 && MaxofLatencies <= maxLatency) {
       numberOfWorkingIPs++;
       validIPs.push({ip: ip, latency: MaxofLatencies, numberOfWorkingIPs: numberOfWorkingIPs});
       const sortedArr = validIPs.sort((a, b) => a.latency - b.latency);
