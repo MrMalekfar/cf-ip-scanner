@@ -186,7 +186,7 @@ async function testIPs(ipList) {
     MaxofLatencies = EachFetchLatency.length > 0 ? Math.max(...EachFetchLatency) : 0; // get the maximum latency or -1 if the array is empty
       if (ch) {
         timeout = 1 * multiply * maxLatency;
-        document.getElementById('test-no').innerText = `#${testNo}:`;
+        document.getElementById('test-no').innerText = `#${numberOfWorkingIPs}/#${testNo}:`;
         document.getElementById('ip-no').innerText = ip;
         document.getElementById('ip-no').style = `color: green`;
         document.getElementById('ip-try').innerText = ch;
