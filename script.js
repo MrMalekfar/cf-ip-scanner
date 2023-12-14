@@ -160,7 +160,7 @@ async function testIPs(ipList) {
     const EachFetchLatency = [];
     var RequestStartTime = 0;
     var failedAttempts = 0;
-    for (const ch of ['', '-', '--', '---', '----', '-----', '------', '-------', '--------', , '\\']) {
+    for (const ch of ['', '-', '--', '---', '----', '-----', '------', '-------', '--------' , '\\']) {
       const timeoutId = setTimeout(() => {
         controller.abort();
       }, timeout);
