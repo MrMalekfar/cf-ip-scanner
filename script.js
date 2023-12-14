@@ -198,7 +198,7 @@ async function testIPs(ipList) {
         document.getElementById('ip-no').innerText = ip;
         document.getElementById('ip-no').style = `color: red`;
         document.getElementById('ip-try').innerText = '';
-        document.getElementById('ip-latency').innerText = '-';
+        document.getElementById('ip-latency').innerText = '';
       }
       clearTimeout(timeoutId);
       chNo++;
