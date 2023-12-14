@@ -204,7 +204,7 @@ async function testIPs(ipList) {
     }
 
     
-    if (testResult === 10 && failedAttempts === 0 && MaxofLatencies <= maxLatency) {
+    if (testResult === 9 && failedAttempts === 0 && MaxofLatencies <= maxLatency) {
       numberOfWorkingIPs++;
       validIPs.push({ip: ip, latency: MaxofLatencies, numberOfWorkingIPs: numberOfWorkingIPs});
       const sortedArr = validIPs.sort((a, b) => a.latency - b.latency);
