@@ -193,7 +193,7 @@ async function testIPs(ipList) {
         document.getElementById('ip-latency').innerText = latency + 'ms';
       } else {
         timeout = 1.2 * multiply * maxLatency;
-        document.getElementById('test-no').innerText = `#${testNo}:`;
+        document.getElementById('test-no').innerText = `#${numberOfWorkingIPs}/#${testNo}:`;
         document.getElementById('ip-no').innerText = ip;
         document.getElementById('ip-no').style = `color: red`;
         document.getElementById('ip-try').innerText = '';
