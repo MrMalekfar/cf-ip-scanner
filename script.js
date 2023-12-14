@@ -149,7 +149,7 @@ async function testIPs(ipList) {
       break;
     }
     testNo++;
-    numberOfWorkingIPs = 0;
+    //numberOfWorkingIPs = 0;
     var testResult = 0;
     const url = `https://${ip}/__down`;
     const startTime = performance.now();
