@@ -140,7 +140,9 @@ function processIPs() {
   }
   return ips
 }
-  function getMeanAndVar(arr) {
+
+async function testIPs(ipList) {
+    function getMeanAndVar(arr) {
 
     function getVariance(arr, mean) {
         return arr.reduce(function(pre, cur) {
@@ -159,7 +161,6 @@ return{
   variance: Math.sqrt(total / arr.length)
 };
 }
-async function testIPs(ipList) {
   for (const ip of ipList) {
     if (immediateStop) {
       break;
