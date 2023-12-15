@@ -380,4 +380,4 @@ function downloadAsJSON() {
   link.click();
   document.body.removeChild(link);
 }
-
+}
