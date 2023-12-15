@@ -204,6 +204,9 @@ async function testIPs(ipList) {
       }
       clearTimeout(timeoutId);
       chNo++;
+      if (latency > maxLatency) {
+      break; // Exit the loop if latency is too high
+      }
     }
 
     if (testResult === 10 && failedAttempts === 0 && MaxofLatencies <= maxLatency) {
