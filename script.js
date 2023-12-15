@@ -128,7 +128,25 @@ function processIPs() {
       ipExclude.split(',').map(c => {return '^' + c.replaceAll('.', '\\.').replaceAll('/', '\\/')}).join('|')
     );
   }
+  function getMeanAndVar(arr) {
 
+    function getVariance(arr, mean) {
+        return arr.reduce(function(pre, cur) {
+            pre = pre + Math.pow((cur - mean), 2);
+            return pre;
+        }, 0)
+    }
+
+    var meanTot = arr.reduce(function(pre, cur) {
+        return pre + cur;
+    })
+    var total = getVariance(arr, meanTot / arr.length);
+
+return{
+  mean: meanTot / arr.length,
+  variance: Math.sqrt(total / arr.length)
+};
+}
   for (const cidr of cfIPv4ToScan) {
     if (regex && !regex.test(cidr)) {
       continue;
@@ -204,9 +222,9 @@ async function testIPs(ipList) {
 
     if (testResult === 10 && failedAttempts === 0 && MaxofLatencies <= maxLatency) {
       numberOfWorkingIPs++;
-      var math = getMeanAndVar(EachFetchLatency);
-      var arr_mean = math.mean;
-      var arr_variance = math.variance;
+      var MeanAndVar = getMeanAndVar(EachFetchLatency);
+      var arr_mean = MeanAndVar.mean;
+      var arr_variance = MeanAndVar.variance;
       validIPs.push({ip: ip, latency: MaxofLatencies, numberOfWorkingIPs: numberOfWorkingIPs, arr_variance = arr_variance, arr_mean = arr_mean});
       const sortedArr = validIPs.sort((a, b) => a.latency - b.latency);
       const tableRows = sortedArr.map(obj => `
@@ -362,22 +380,4 @@ function downloadAsJSON() {
   link.click();
   document.body.removeChild(link);
 }
-function getMeanAndVar(arr) {
 
-    function getVariance(arr, mean) {
-        return arr.reduce(function(pre, cur) {
-            pre = pre + Math.pow((cur - mean), 2);
-            return pre;
-        }, 0)
-    }
-
-    var meanTot = arr.reduce(function(pre, cur) {
-        return pre + cur;
-    })
-    var total = getVariance(arr, meanTot / arr.length);
-
-return{
-  mean: meanTot / arr.length,
-  variance: Math.sqrt(total / arr.length)
-};
-}
