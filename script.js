@@ -141,26 +141,6 @@ function processIPs() {
   return ips
 }
 
-function getMeanAndVar(arr) {
-
-    function getVariance(arr, mean) {
-        return arr.reduce(function(pre, cur) {
-            pre = pre + Math.pow((cur - mean), 2);
-            return pre;
-        }, 0)
-    }
-
-    var meanTot = arr.reduce(function(pre, cur) {
-        return pre + cur;
-    })
-    var total = getVariance(arr, meanTot / arr.length);
-
-return{
-  mean: meanTot / arr.length,
-  variance: Math.sqrt(total / arr.length)
-};
-}
-
 async function testIPs(ipList) {
   for (const ip of ipList) {
     if (immediateStop) {
@@ -381,4 +361,23 @@ function downloadAsJSON() {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+}
+function getMeanAndVar(arr) {
+
+    function getVariance(arr, mean) {
+        return arr.reduce(function(pre, cur) {
+            pre = pre + Math.pow((cur - mean), 2);
+            return pre;
+        }, 0)
+    }
+
+    var meanTot = arr.reduce(function(pre, cur) {
+        return pre + cur;
+    })
+    var total = getVariance(arr, meanTot / arr.length);
+
+return{
+  mean: meanTot / arr.length,
+  variance: Math.sqrt(total / arr.length)
+};
 }
