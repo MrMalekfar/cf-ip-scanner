@@ -123,8 +123,20 @@
     </div>
     <table class="table table-striped" dir="ltr">
       <thead>
+           <tr>
+             <th width="35"  style= "font-size: 15px;">
+            
+            </th>
+            <th width="70">
+              <div class="btn-group" role="group" dir="rtl">
+                <button class="btn btn-outline-secondary btn-sm" onclick="downloadAsCSV()"><img height="20px" src="assets/icon-csv.png" /></button>
+                <button class="btn btn-outline-secondary btn-sm" onclick="downloadAsJSON()"><img height="20px" src="assets/icon-json.png" /></button>
+                <button class="btn btn-outline-secondary btn-sm" onclick="copyAllToClipboard()"><img height="20px" src="assets/icon-copy.png" /></button>
+              </div>
+            </th>
+          </tr>
         <tr>
-          <th width="35"  style= "font-size: 12px;">
+          <th width="35"  style= "font-size: 14px;">
             #
           </th>
           <th style="min-width: 150px; font-size: 12px;"">
@@ -143,16 +155,9 @@
             <span class="lang-field lang-fa">میانگین</span>
             <span class="lang-field lang-en">average</span>  
           </th>
-          <th width="70">
-            <div class="btn-group" role="group" dir="ltr">
-              <button class="btn btn-outline-secondary btn-sm" onclick="downloadAsCSV()"><img height="20px" src="assets/icon-csv.png" /></button>
-              <button class="btn btn-outline-secondary btn-sm" onclick="downloadAsJSON()"><img height="20px" src="assets/icon-json.png" /></button>
-              <button class="btn btn-outline-secondary btn-sm" onclick="copyAllToClipboard()"><img height="20px" src="assets/icon-copy.png" /></button>
-            </div>
-          </th>
         </tr>
       </thead>
-      <tbody id="result">
+      <tbody id="result" style= "font-size: 12px;">
       </tbody>
     </table>
   </div>
