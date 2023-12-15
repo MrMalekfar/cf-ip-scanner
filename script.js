@@ -128,6 +128,18 @@ function processIPs() {
       ipExclude.split(',').map(c => {return '^' + c.replaceAll('.', '\\.').replaceAll('/', '\\/')}).join('|')
     );
   }
+
+  for (const cidr of cfIPv4ToScan) {
+    if (regex && !regex.test(cidr)) {
+      continue;
+    }
+    if (excludeRegex && excludeRegex.test(cidr)) {
+      continue;
+    }
+    ips = ips.concat(cidrToRandomIPArray(cidr));
+  }
+  return ips
+}
   function getMeanAndVar(arr) {
 
     function getVariance(arr, mean) {
@@ -147,18 +159,6 @@ return{
   variance: Math.sqrt(total / arr.length)
 };
 }
-  for (const cidr of cfIPv4ToScan) {
-    if (regex && !regex.test(cidr)) {
-      continue;
-    }
-    if (excludeRegex && excludeRegex.test(cidr)) {
-      continue;
-    }
-    ips = ips.concat(cidrToRandomIPArray(cidr));
-  }
-  return ips
-}
-
 async function testIPs(ipList) {
   for (const ip of ipList) {
     if (immediateStop) {
