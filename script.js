@@ -141,8 +141,9 @@ function processIPs() {
   return ips
 }
 
-async function testIPs(ipList) {
 
+
+async function testIPs(ipList) {
   for (const ip of ipList) {
     if (immediateStop) {
       break;
@@ -160,6 +161,8 @@ async function testIPs(ipList) {
     const EachFetchLatency = [];
     var RequestStartTime = 0;
     var failedAttempts = 0;
+    var arr_mean = 0;
+    var arr_variance = 0;
     for (const ch of ['', '-', '--', '---', '----', '-----', '------', '-------', '--------' , '\\']) {
       const timeoutId = setTimeout(() => {
         controller.abort();
@@ -205,13 +208,18 @@ async function testIPs(ipList) {
 
     if (testResult === 10 && failedAttempts === 0 && MaxofLatencies <= maxLatency) {
       numberOfWorkingIPs++;
-      validIPs.push({ip: ip, latency: MaxofLatencies, numberOfWorkingIPs: numberOfWorkingIPs});
+      var MeanAndVar = getMeanAndVar(EachFetchLatency);
+      arr_mean = Math.floor(MeanAndVar.mean);
+      arr_variance = Math.floor(MeanAndVar.variance);
+      validIPs.push({ip: ip, latency: MaxofLatencies, numberOfWorkingIPs: numberOfWorkingIPs, arr_variance: arr_variance, arr_mean: arr_mean});
       const sortedArr = validIPs.sort((a, b) => a.latency - b.latency);
       const tableRows = sortedArr.map(obj => `
         <tr>
           <td>${obj.numberOfWorkingIPs}</td>
           <td>${obj.ip}</td>
-          <td>${obj.arr_mean}</td>
+          <td>${obj.latency}ms</td>
+          <td>${obj.arr_variance}</td>
+          <td>${obj.arr_mean}ms</td>
           <td>
           <button class="btn btn-outline-secondary btn-sm" onclick="copyToClipboard('${obj.ip}')"><img height="16px" src="assets/icon-copy.png" /></button>
           </td>
@@ -358,4 +366,22 @@ function downloadAsJSON() {
   link.click();
   document.body.removeChild(link);
 }
+function getMeanAndVar(arr) {
+
+    function getVariance(arr, mean) {
+        return arr.reduce(function(pre, cur) {
+            pre = pre + Math.pow((cur - mean), 2);
+            return pre;
+        }, 0)
+    }
+
+    var meanTot = arr.reduce(function(pre, cur) {
+        return pre + cur;
+    })
+    var total = getVariance(arr, meanTot / arr.length);
+
+return{
+  mean: meanTot / arr.length,
+  variance: Math.sqrt(total / arr.length)
+};
 }
