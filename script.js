@@ -149,20 +149,19 @@ async function testIPs(ipList) {
       break;
     }
     testNo++;
-    //numberOfWorkingIPs = 0;
-    var testResult = 0;
+    let testResult = 0;
     const url = `https://${ip}/__down`;
     const startTime = performance.now();
     const controller = new AbortController();
     const multiply = maxLatency <= 500 ? 1.5 : (maxLatency <= 1000 ? 1.2 : 1);
-    var timeout = 1.5 * multiply * maxLatency;
-    var chNo = 0;
-    var MaxofLatencies = 0;
+    let timeout = 1.5 * multiply * maxLatency;
+    let chNo = 0;
+    let MaxofLatencies = 0;
     const EachFetchLatency = [];
-    var RequestStartTime = 0;
-    var failedAttempts = 0;
-    var arr_mean = 0;
-    var arr_variance = 0;
+    let RequestStartTime = 0;
+    let failedAttempts = 0;
+    let arr_mean = 0;
+    let arr_variance = 0;
     for (const ch of ['', '-', '--', '---', '----', '-----', '------', '-------', '--------' , '\\']) {
       const timeoutId = setTimeout(() => {
         controller.abort();
@@ -184,19 +183,21 @@ async function testIPs(ipList) {
           testResult++;
         }
       }
-    var latency = Math.floor((performance.now() - RequestStartTime));
+    let latency = Math.floor((performance.now() - RequestStartTime));
     EachFetchLatency.push(latency);
     MaxofLatencies = EachFetchLatency.length > 0 ? Math.max(...EachFetchLatency) : 0; // get the maximum latency or -1 if the array is empty
       if (ch) {
         timeout = 1 * multiply * maxLatency;
-        document.getElementById('test-no').innerText = `#${numberOfWorkingIPs}:---#${testNo}:`;
+        document.getElementById('out-no').innerText = `Working IPs: ${numberOfWorkingIPs}`;
+        document.getElementById('test-no').innerText = `Tested IPs: ${testNo}`;
         document.getElementById('ip-no').innerText = ip;
         document.getElementById('ip-no').style = `color: green`;
         document.getElementById('ip-try').innerText = ch;
         document.getElementById('ip-latency').innerText = latency + 'ms';
       } else {
         timeout = 1.2 * multiply * maxLatency;
-        document.getElementById('test-no').innerText = `#${numberOfWorkingIPs}:---#${testNo}:`;
+        document.getElementById('out-no').innerText = `Working IPs: ${numberOfWorkingIPs}`;
+        document.getElementById('test-no').innerText = `Tested IPs: ${testNo}`;
         document.getElementById('ip-no').innerText = ip;
         document.getElementById('ip-no').style = `color: red`;
         document.getElementById('ip-try').innerText = '';
@@ -211,14 +212,17 @@ async function testIPs(ipList) {
 
     if (testResult === 10 && failedAttempts === 0 && MaxofLatencies <= maxLatency) {
       numberOfWorkingIPs++;
-      var MeanAndVar = getMeanAndVar(EachFetchLatency);
-      arr_mean = Math.floor(MeanAndVar.mean);
-      arr_variance = Math.floor(MeanAndVar.variance);
-      validIPs.push({ip: ip, latency: MaxofLatencies, numberOfWorkingIPs: numberOfWorkingIPs, arr_variance: arr_variance, arr_mean: arr_mean});
+      const sum = EachFetchLatency.reduce((a, b) => a + b, 0);
+      const mean = sum / EachFetchLatency.length;
+      const variance = Math.sqrt(EachFetchLatency.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / EachFetchLatency.length);
+      arr_mean = Math.floor(mean);
+      arr_variance = Math.floor(variance);
+      validIPs.push({ip: ip, latency: MaxofLatencies, numberOfWorkingIPs: numberOfWorkingIPs, arr_variance: arr_variance, arr_mean: arr_mean})
       const sortedArr = validIPs.sort((a, b) => a.latency - b.latency);
-      const tableRows = sortedArr.map(obj => `
+      const tableRows = sortedArr.map((obj, index) =>  {
+  return `
         <tr>
-          <td>${obj.numberOfWorkingIPs}</td>
+          <td>${index + 1}</td>
           <td>${obj.ip}</td>
           <td>${obj.latency}ms</td>
           <td>${obj.arr_variance}</td>
@@ -226,7 +230,7 @@ async function testIPs(ipList) {
           <td>
           <button class="btn btn-outline-secondary btn-sm" onclick="copyToClipboard('${obj.ip}')"><img height="16px" src="assets/icon-copy.png" /></button>
           </td>
-        </tr>`).join('\n');
+        </tr>`}).join('\n');
       document.getElementById('result').innerHTML = tableRows;
     }
 
@@ -368,23 +372,4 @@ function downloadAsJSON() {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
-}
-function getMeanAndVar(arr) {
-
-    function getVariance(arr, mean) {
-        return arr.reduce(function(pre, cur) {
-            pre = pre + Math.pow((cur - mean), 2);
-            return pre;
-        }, 0)
-    }
-
-    var meanTot = arr.reduce(function(pre, cur) {
-        return pre + cur;
-    })
-    var total = getVariance(arr, meanTot / arr.length);
-
-return{
-  mean: meanTot / arr.length,
-  variance: Math.sqrt(total / arr.length)
-};
 }
