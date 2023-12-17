@@ -56,7 +56,11 @@
       border-radius: 15px;
       overflow: hidden;
     }
-    
+    .custom-table-header {
+      background-color: #495057;
+      color: white;
+    }
+
     /* Add more styles... */
   </style>
 </head>
@@ -78,7 +82,7 @@
         <span class="lang-field lang-en">No. of IPs:</span>
       </label>
       <div class="col-sm-12 col-md-8 col-lg-4">
-        <input class="form-control" type="number" id="max-ip" min="1" max="5000" value="5">
+        <input class="form-control" type="number" id="max-ip" min="1" max="5000" step="5"  value="5" placeholder="Enter number of IPs">
       </div>
       <label for="max-latency" class="col-sm-12 col-md-4 col-lg-2 col-form-label">
         <span class="lang-field lang-fa">تاخیر مجاز:</span>
@@ -172,7 +176,7 @@
     </div>
     <div class="table-responsive-md">
     <table class="table table-striped table-hover table-bordered table-sm rounded-table">
-      <thead class="table-dark">
+      <thead>
           <tr>
             <div class="d-flex justify-content-center">
             <div class="btn-group justify-content-center" role="group">
@@ -189,26 +193,26 @@
             </div> 
           </tr>
         <tr>
-          <th width="30"  style= "font-size: 14px; padding: 10px;">
+          <th style="background-color: #23456a !important; color: white !important;" width="30"  style= "font-size: 14px; padding: 10px;">
             #
           </th>
-          <th style="min-width: 110px; font-size: 12px;"">
+          <th style="background-color: #23456a !important; color: white !important;" style="min-width: 110px; font-size: 12px;"">
             <span class="lang-field lang-fa">آی‌پی</span>
             <span class="lang-field lang-en">IP</span>  
           </th>
-          <th  style= "font-size: 12px;">
+          <th style="background-color: #23456a !important; color: white !important;" style= "font-size: 12px;">
             <span class="lang-field lang-fa">بیشینه</span>
             <span class="lang-field lang-en">max</span>  
           </th>
-          <th style= "font-size: 12px;">
+          <th style="background-color:#23456a !important; color: white !important;" style= "font-size: 12px;">
             <span class="lang-field lang-fa">واریانس</span>
             <span class="lang-field lang-en">variance</span>  
           </th>
-          <th  style= "font-size: 12px;">
+          <th style="background-color: #23456a !important; color: white !important;" style= "font-size: 12px;">
             <span class="lang-field lang-fa">میانگین</span>
             <span class="lang-field lang-en">average</span>  
           </th>
-          <th  style= "font-size: 12px;">
+          <th style="background-color: #23456a !important; color: white !important;" style= "font-size: 12px;">
             <span class="lang-field lang-fa">کپی</span>
             <span class="lang-field lang-en">Copy</span>  
           </th>
