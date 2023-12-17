@@ -38,20 +38,25 @@
       color: #007bff !important; /* Change the primary color */
     }
     .glass-btn {
-  background-color: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: lab(30 4.38 1.64);
-  transition: all 0.3s ease;
-}
-.glass-btn:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  transform: scale(1.05);
-}
-.glass-btn:active {
-  transform: scale(0.95);
-}
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: lab(30 4.38 1.64);
+      transition: all 0.3s ease;
+    }
+    .glass-btn:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+    .glass-btn:active {
+      transform: scale(0.95);
+    }
+    .rounded-table {
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    
     /* Add more styles... */
   </style>
 </head>
@@ -59,7 +64,7 @@
   <div class="container border rounded-2 mt-2 border-dark">
     <div class="row">
       <div class="col-12 p-2 text-center border-bottom border-dark text-primary">
-        <span class="lang-field lang-fa fw-bold">پیدا کردن آی‌پی تمیز کلادفلر</span>
+        <span class="lang-field lang-fa fw-bold">یافتن آی‌پی تمیز کلادفلر</span>
         <span class="lang-field lang-en fw-bold">Cloudflare's Clean IP Scanner</span>
         <div class="btn-group float-end" role="group" dir="ltr">
           <button id="btn-fa" class="btn btn-lang btn-outline-primary btn-sm rounded-2" type="button">FA</button>&nbsp;
@@ -166,8 +171,8 @@
       <div class="col col-xs-1 col-lg-1 py-1" id="ip-latency"></div>
     </div>
     <div class="table-responsive-md">
-    <table class="table table-bordered" dir="ltr">
-      <thead>
+    <table class="table table-striped table-hover table-bordered table-sm rounded-table">
+      <thead class="table-dark">
           <tr>
             <div class="d-flex justify-content-center">
             <div class="btn-group justify-content-center" role="group">
@@ -184,7 +189,7 @@
             </div> 
           </tr>
         <tr>
-          <th width="30"  style= "font-size: 14px;">
+          <th width="30"  style= "font-size: 14px; padding: 10px;">
             #
           </th>
           <th style="min-width: 110px; font-size: 12px;"">
@@ -202,6 +207,10 @@
           <th  style= "font-size: 12px;">
             <span class="lang-field lang-fa">میانگین</span>
             <span class="lang-field lang-en">average</span>  
+          </th>
+          <th  style= "font-size: 12px;">
+            <span class="lang-field lang-fa">کپی</span>
+            <span class="lang-field lang-en">Copy</span>  
           </th>
         </tr>
       </thead>
