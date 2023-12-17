@@ -157,6 +157,7 @@ async function testIPs(ipList) {
     let timeout = 1.5 * multiply * maxLatency;
     let chNo = 0;
     let MaxofLatencies = 0;
+    let MinofLatencies = 0;
     const EachFetchLatency = [];
     let RequestStartTime = 0;
     let failedAttempts = 0;
@@ -186,6 +187,7 @@ async function testIPs(ipList) {
     let latency = Math.floor((performance.now() - RequestStartTime));
     EachFetchLatency.push(latency);
     MaxofLatencies = EachFetchLatency.length > 0 ? Math.max(...EachFetchLatency) : 0; // get the maximum latency or -1 if the array is empty
+    MinofLatencies = EachFetchLatency.length > 0 ? Math.min(...EachFetchLatency) : 5000; // get the maximum latency or -1 if the array is empty
       if (ch) {
         timeout = 1 * multiply * maxLatency;
         document.getElementById('out-no').innerText = `Working IPs: ${numberOfWorkingIPs}`;
@@ -206,6 +208,9 @@ async function testIPs(ipList) {
       clearTimeout(timeoutId);
       chNo++;
       if (latency > maxLatency) {
+      break; // Exit the loop if latency is too high
+      }
+      if (MinofLatencies < 30) {
       break; // Exit the loop if latency is too high
       }
     }
@@ -275,7 +280,7 @@ async function testIPs(ipList) {
   })
 
 function copyToClipboard(ip) {
-  window.navigator.clipboard.writeText(ip).then(() => {
+  navigator.clipboard.writeText(ip).then(() => {
     alert('آی‌پی‌ در کلیپ‌بورد کپی شد.');
   }).catch(() => {
     alert('مشکلی پیش آمده است!');
