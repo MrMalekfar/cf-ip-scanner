@@ -269,6 +269,10 @@ async function testIPs(ipList) {
   }
   setLang(language)
 }
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
 
 function copyToClipboard(ip) {
   navigator.clipboard.writeText(ip).then(() => {
