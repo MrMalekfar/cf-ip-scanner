@@ -163,7 +163,7 @@ async function testIPs(ipList) {
     let failedAttempts = 0;
     let arr_mean = 0;
     let arr_variance = 0;
-    for (const ch of ['', '-', '--', '---', '----', '-----', '------', '-------', '--------' ,'\\']) {
+    for (const ch of ['', '-', '--', '---', '----', '-----', '------', '-------', '--------', '\\']) {
       const timeoutId = setTimeout(() => {
         controller.abort();
       }, timeout);
