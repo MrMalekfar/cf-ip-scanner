@@ -180,14 +180,23 @@
           <tr>
             <div class="d-flex justify-content-center">
             <div class="btn-group justify-content-center" role="group">
-              <button type="button" class="btn glass-btn me-2 me-md-3" data-bs-toggle="tooltip" title="Copy" onclick="copyAllToClipboard()">
-                <img height="20px" src="assets/icon-copy.png" /><br/> Copy
+              <button type="button" class="btn glass-btn me-2 me-md-3" data-bs-toggle="tooltip" title="Copy IPv6" onclick="copyAllIPv6ToClipboard()">
+                <img height="20px" src="assets/icon-copy.png" /><br/> Copy_IPv6
+              </button>
+              <button type="button" class="btn glass-btn me-2 me-md-3" data-bs-toggle="tooltip" title="Copy IPv4" onclick="copyAllToClipboard()">
+                <img height="20px" src="assets/icon-copy.png" /><br/> Copy_IPv4
+              </button>
+              <button type="button" class="btn glass-btn me-2 me-md-3" data-bs-toggle="tooltip" title="Download as CSV" onclick="downloadIPv6AsCSV()">
+                <img height="20px" src="assets/icon-csv.png" /><br/> CSV_IPv6
               </button>
               <button type="button" class="btn glass-btn me-2 me-md-3" data-bs-toggle="tooltip" title="Download as CSV" onclick="downloadAsCSV()">
-                <img height="20px" src="assets/icon-csv.png" /><br/> CSV
+                <img height="20px" src="assets/icon-csv.png" /><br/> CSV_IPv4
+              </button>
+              <button type="button" class="btn glass-btn me-2 me-md-3" data-bs-toggle="tooltip" title="Download as JSON" onclick="downloadIPv6AsJSON()">
+                <img height="20px" src="assets/icon-json.png" /><br/> JSON_IPv6
               </button>
               <button type="button" class="btn glass-btn me-2 me-md-3" data-bs-toggle="tooltip" title="Download as JSON" onclick="downloadAsJSON()">
-                <img height="20px" src="assets/icon-json.png" /><br/> JSON
+                <img height="20px" src="assets/icon-json.png" /><br/> JSON_IPv4
               </button>
             </div>
             </div> 
@@ -197,8 +206,12 @@
             #
           </th>
           <th style="background-color: #23456a !important; color: white !important;" style="min-width: 110px; font-size: 12px;"">
-            <span class="lang-field lang-fa">آی‌پی</span>
-            <span class="lang-field lang-en">IP</span>  
+            <span class="lang-field lang-fa">آی‌پیv4</span>
+            <span class="lang-field lang-en">IPv4</span>  
+          </th>
+          <th style="background-color: #23456a !important; color: white !important;" style="min-width: 110px; font-size: 12px;"">
+            <span class="lang-field lang-fa">آی‌پیv6</span>
+            <span class="lang-field lang-en">IPv6</span>  
           </th>
           <th style="background-color: #23456a !important; color: white !important;" style= "font-size: 12px;">
             <span class="lang-field lang-fa">بیشینه</span>
@@ -213,8 +226,12 @@
             <span class="lang-field lang-en">average</span>  
           </th>
           <th style="background-color: #23456a !important; color: white !important;" style= "font-size: 12px;">
-            <span class="lang-field lang-fa">کپی</span>
-            <span class="lang-field lang-en">Copy</span>  
+            <span class="lang-field lang-fa">کپیIPv4</span>
+            <span class="lang-field lang-en">CopyIPv4</span>  
+          </th>
+          <th style="background-color: #23456a !important; color: white !important;" style= "font-size: 12px;">
+            <span class="lang-field lang-fa">کپیIPv6</span>
+            <span class="lang-field lang-en">CopyIPv6</span>  
           </th>
         </tr>
       </thead>
