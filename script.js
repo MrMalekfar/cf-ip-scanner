@@ -222,18 +222,23 @@ async function testIPs(ipList) {
       const variance = Math.sqrt(EachFetchLatency.reduce((a, b) => a + Math.pow(b - mean, 2), 0) / EachFetchLatency.length);
       arr_mean = Math.floor(mean);
       arr_variance = Math.floor(variance);
-      validIPs.push({ip: ip, latency: MaxofLatencies, numberOfWorkingIPs: numberOfWorkingIPs, arr_variance: arr_variance, arr_mean: arr_mean})
+      const ipv6 = ipv4ToIpv6(ip);
+      validIPs.push({ip: ip,ipv6: ipv6, latency: MaxofLatencies, numberOfWorkingIPs: numberOfWorkingIPs, arr_variance: arr_variance, arr_mean: arr_mean})
       const sortedArr = validIPs.sort((a, b) => a.latency - b.latency);
       const tableRows = sortedArr.map((obj, index) =>  {
   return `
         <tr>
           <td>${index + 1}</td>
           <td>${obj.ip}</td>
+          <td>${obj.ipv6}</td>
           <td>${obj.latency}ms</td>
           <td>${obj.arr_variance}</td>
           <td>${obj.arr_mean}ms</td>
           <td>
           <button class="btn btn-outline-secondary btn-sm" onclick="copyToClipboard('${obj.ip}')"><img height="16px" src="assets/icon-copy.png" /></button>
+          </td>
+          <td>
+          <button class="btn btn-outline-secondary btn-sm" onclick="copyToClipboard('${obj.ipv6}')"><img height="16px" src="assets/icon-copy.png" /></button>
           </td>
         </tr>`}).join('\n');
       document.getElementById('result').innerHTML = tableRows;
@@ -289,6 +294,11 @@ function copyToClipboard(ip) {
 
 function copyAllToClipboard(ip) {
   const txt = validIPs.map(el => el.ip).join('\n');
+  copyToClipboard(txt)
+}
+
+function copyAllIPv6ToClipboard(ip) {
+  const txt = validIPs.map(el => el.ipv6).join('\n');
   copyToClipboard(txt)
 }
 
@@ -370,6 +380,19 @@ function downloadAsCSV() {
   document.body.removeChild(link);
 }
 
+function downloadIPv6AsCSV() {
+  const csvString = validIPs.map(el => el.ipv6).join('\n');
+  const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.setAttribute('href', url);
+  link.setAttribute('download', 'ip-list.csv');
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
 function downloadAsJSON() {
   const jsonString = JSON.stringify(validIPs.map(el => el.ip), null, 2);
   const blob = new Blob([jsonString], { type: 'application/json;charset=utf-8;' });
@@ -381,4 +404,27 @@ function downloadAsJSON() {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+}
+
+function downloadIPv6AsJSON() {
+  const jsonString = JSON.stringify(validIPs.map(el =>  '[' + el.ipv6 + ']'), null, 2);
+  const blob = new Blob([jsonString], { type: 'application/json;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.setAttribute('href', url);
+  link.setAttribute('download', 'ip-list.json');
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+function ipv4ToIpv6(ip) {
+  const ipv6Prefix = "::FFFF:";
+  const ipv6Suffix = ip.split(".").map((octet) => {
+    const hexOctet = parseInt(octet, 10).toString(16);
+    return hexOctet.padStart(2, "0");
+  }).join("");
+  const ipv6Address = ipv6Prefix + ipv6Suffix.toUpperCase().match(/.{1,4}/g).join(":");
+  return ipv6Address;
 }
