@@ -174,32 +174,36 @@
       <div class="col col-xs-2 col-lg-1 py-1" id="ip-try"></div>
       <div class="col col-xs-1 col-lg-1 py-1" id="ip-latency"></div>
     </div>
-    <div class="table-responsive-md">
+<div class="table-responsive-md">
     <table class="table table-striped table-hover table-bordered table-sm rounded-table">
       <thead>
           <tr>
-            <div class="d-flex justify-content-center">
-            <div class="btn-group justify-content-center" role="group">
-              <button type="button" class="btn btn-sm glass-btn " data-bs-toggle="tooltip" title="Copy IPv6" onclick="copyAllIPv6ToClipboard()">
-                <img height="20px" src="assets/icon-copy.png" /><br/> Copy_IPv6
-              </button>
-              <button type="button" class="btn btn-sm glass-btn " data-bs-toggle="tooltip" title="Copy IPv4" onclick="copyAllToClipboard()">
-                <img height="20px" src="assets/icon-copy.png" /><br/> Copy_IPv4
-              </button>
-              <button type="button" class="btn btn-sm glass-btn me-0.1 me-md-0.1" data-bs-toggle="tooltip" title="Download as CSV" onclick="downloadIPv6AsCSV()">
-                <img height="20px" src="assets/icon-csv.png" /><br/> CSV_IPv6
-              </button>
-              <button type="button" class="btn btn-sm glass-btn me-0.1 me-md-0.1" data-bs-toggle="tooltip" title="Download as CSV" onclick="downloadAsCSV()">
-                <img height="20px" src="assets/icon-csv.png" /><br/> CSV_IPv4
-              </button>
-              <button type="button" class="btn btn-sm glass-btn me-0.1 me-md-0.1" data-bs-toggle="tooltip" title="Download as JSON" onclick="downloadIPv6AsJSON()">
-                <img height="20px" src="assets/icon-json.png" /><br/> JSON_IPv6
-              </button>
-              <button type="button" class="btn btn-sm glass-btn me-0.1 me-md-0.1" data-bs-toggle="tooltip" title="Download as JSON" onclick="downloadAsJSON()">
-                <img height="20px" src="assets/icon-json.png" /><br/> JSON_IPv4
-              </button>
+            <div class="container">
+              <div class="d-flex flex-column flex-md-row justify-content-center align-items-center">
+                <div class="mb-3 mb-md-0">
+                  <!-- First group of 3 buttons -->
+                  <div class="btn-group" role="group">
+                     <button type="button" class="btn btn-sm glass-btn " data-bs-toggle="tooltip" title="Copy IPv6" onclick="copyAllIPv6ToClipboard()">
+					<img height="20px" src="assets/icon-copy.png" /><br/> Copy_IPv6
+                    <button type="button" class="btn btn-sm glass-btn me-0.1 me-md-0.1" data-bs-toggle="tooltip" title="Download as CSV" onclick="downloadIPv6AsCSV()">
+					<img height="20px" src="assets/icon-csv.png" /><br/> CSV_IPv6
+                    <button type="button" class="btn btn-sm glass-btn me-0.1 me-md-0.1" data-bs-toggle="tooltip" title="Download as JSON" onclick="downloadIPv6AsJSON()">
+					<img height="20px" src="assets/icon-json.png" /><br/> JSON_IPv6
+                  </div>
+                </div>
+                <div class="mb-3 mb-md-0">
+                  <!-- Second group of 3 buttons -->
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-sm glass-btn " data-bs-toggle="tooltip" title="Copy IPv4" onclick="copyAllToClipboard()">
+					<img height="20px" src="assets/icon-copy.png" /><br/> Copy_IPv4
+                    <button type="button" class="btn btn-sm glass-btn me-0.1 me-md-0.1" data-bs-toggle="tooltip" title="Download as CSV" onclick="downloadAsCSV()">
+					<img height="20px" src="assets/icon-csv.png" /><br/> CSV_IPv4
+                    <button type="button" class="btn btn-sm glass-btn me-0.1 me-md-0.1" data-bs-toggle="tooltip" title="Download as JSON" onclick="downloadAsJSON()">
+					<img height="20px" src="assets/icon-json.png" /><br/> JSON_IPv4
+                  </div>
+                </div>
+              </div>
             </div>
-            </div> 
           </tr>
         <tr>
           <th style="background-color: #23456a !important; color: white !important;" width="30"  style= "font-size: 14px; padding: 10px;">
