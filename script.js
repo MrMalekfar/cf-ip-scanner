@@ -163,7 +163,7 @@ async function testIPs(ipList) {
     let failedAttempts = 0;
     let arr_mean = 0;
     let arr_variance = 0;
-    for (const ch of ['', '-', '--', '---', '----', '-----', '------', '-------', '--------', '\\']) {
+    for (const ch of ['', '-', '--', '---', '----', '-----', '------', '-------', '--------', '---------', '----------', '-----------', '------------', '-------------', '\\']) {
       const timeoutId = setTimeout(() => {
         controller.abort();
       }, timeout);
@@ -215,7 +215,7 @@ async function testIPs(ipList) {
       }
     }
 
-    if (testResult === 10 && failedAttempts === 0 && MaxofLatencies <= maxLatency) {
+    if (testResult === 15 && failedAttempts === 0 && MaxofLatencies <= maxLatency) {
       numberOfWorkingIPs++;
       const sum = EachFetchLatency.reduce((a, b) => a + b, 0);
       const mean = sum / EachFetchLatency.length;
