@@ -211,7 +211,7 @@ async function testIPs(ipList) {
       if (latency > maxLatency) {
       break; // Exit the loop if latency is too high
       }
-      if (MinofLatencies < 30) {
+      if (MinofLatencies < 15) {
       break; // Exit the loop if latency is too high
       }
     }
