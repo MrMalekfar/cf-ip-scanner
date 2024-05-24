@@ -151,7 +151,7 @@ async function testIPs(ipList) {
     testNo++;
     let testResult = 0;
     //const url = `https://${ip}:2096/__down`;
-    const url = `https://${ip}:2096//cdn-cgi/trace`;
+    const url = `https://${ip}:80//cdn-cgi/trace`;
     const startTime = performance.now();
     const controller = new AbortController();
     const multiply = maxLatency <= 500 ? 1.5 : (maxLatency <= 1000 ? 1.2 : 1);
