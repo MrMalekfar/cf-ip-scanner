@@ -29,6 +29,7 @@ let language = localStorage.getItem('lang') || 'fa'
 
 document.getElementById('max-ip').value = localStorage.getItem('max-ip') || 50;
 document.getElementById('max-latency').value = localStorage.getItem('max-latency') || 400;
+document.getElementById('max-difference').value = localStorage.getItem('max-difference') || 50;
 document.getElementById('ip-regex').value = localStorage.getItem('ip-regex');
 document.getElementById('ip-include').value = localStorage.getItem('ip-include');
 document.getElementById('ip-exclude').value = localStorage.getItem('ip-exclude');
@@ -71,6 +72,7 @@ function cancelScan() {
   document.getElementById('btn-start').disabled = false;
   document.getElementById('max-ip').disabled = false;
   document.getElementById('max-latency').disabled = false;
+  document.getElementById('max-difference').disabled = false;
   document.getElementById('ip-regex').disabled = false;
   document.getElementById('ip-include').disabled = false;
   document.getElementById('ip-exclude').disabled = false;
@@ -89,6 +91,7 @@ function startScan() {
 
   localStorage.setItem('max-ip', maxIP);
   localStorage.setItem('max-latency', maxLatency);
+  localStorage.setItem('max-difference', maxdifference); 
   localStorage.setItem('ip-regex', ipRegex);
   localStorage.setItem('ip-include', ipInclude);
   localStorage.setItem('ip-exclude', ipExclude);
@@ -100,6 +103,7 @@ function startScan() {
   document.getElementById('btn-start').disabled = true;
   document.getElementById('max-ip').disabled = true;
   document.getElementById('max-latency').disabled = true;
+  document.getElementById('max-difference').disabled = true;
   document.getElementById('ip-regex').disabled = true;
   document.getElementById('ip-include').disabled = true;
   document.getElementById('ip-exclude').disabled = true;
@@ -261,6 +265,7 @@ async function testIPs(ipList) {
   document.getElementById('btn-start').disabled = false;
   document.getElementById('max-ip').disabled = false;
   document.getElementById('max-latency').disabled = false;
+  document.getElementById('max-difference').disabled = false;
   document.getElementById('ip-regex').disabled = false;
   document.getElementById('ip-include').disabled = false;
   document.getElementById('ip-exclude').disabled = false;
