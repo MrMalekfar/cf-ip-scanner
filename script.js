@@ -19,6 +19,7 @@ let maxIP;
 let testNo;
 let validIPs;
 let maxLatency;
+let maxdifference;
 let numberOfWorkingIPs;
 let ipRegex;
 let immediateStop = false;
@@ -81,6 +82,7 @@ let ips = [];
 function startScan() {
   maxIP = ~~document.getElementById('max-ip').value;
   maxLatency = ~~document.getElementById('max-latency').value;
+  maxdifference = ~~document.getElementById('max-difference').value;
   ipRegex = document.getElementById('ip-regex').value;
   ipInclude = document.getElementById('ip-include').value;
   ipExclude = document.getElementById('ip-exclude').value;
@@ -214,7 +216,7 @@ async function testIPs(ipList) {
       if (MinofLatencies < 15) {
       break; // Exit the loop if latency is too high
       }
-      if (MaxofLatencies - MinofLatencies > 50) {
+      if (MaxofLatencies - MinofLatencies > maxdifference) {
       break; // Exit the loop if latency is too high
       }
     }
