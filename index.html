@@ -68,7 +68,7 @@
     <div class="container border rounded-2 mt-2 border-dark">
         <div class="row">
             <div class="col-12 p-2 text-center border-bottom border-dark text-primary">
-                <span class="lang-field lang-fa fw-bold">ÛŒØ§ÙØªÙ† Ø¢ÛŒâ€ŒÙ¾ÛŒ ØªÙ…ÛŒØ² Ú©Ù„Ø§Ø¯ÙÙ„Ø±</span>
+                <span class="lang-field lang-fa fw-bold">یافتن آی‌پی تمیز کلادفلر</span>
                 <span class="lang-field lang-en fw-bold">Cloudflare's Clean IP Scanner</span>
                 <div class="btn-group float-end" role="group" dir="ltr">
                     <button id="btn-fa" class="btn btn-lang btn-outline-primary btn-sm rounded-2" type="button">FA</button>&nbsp;
@@ -78,21 +78,21 @@
         </div>
         <div class="row my-2">
             <label for="max-ip" class="col-sm-12 col-md-4 col-lg-2 col-form-label">
-                <span class="lang-field lang-fa">ØªØ¹Ø¯Ø§Ø¯ Ø¢ÛŒâ€ŒÙ¾ÛŒ:</span>
+                <span class="lang-field lang-fa">تعداد آی‌پی:</span>
                 <span class="lang-field lang-en">No. of IPs:</span>
             </label>
             <div class="col-sm-12 col-md-8 col-lg-4">
                 <input class="form-control" type="number" id="max-ip" min="1" max="5000" step="5" value="5" placeholder="Enter number of IPs">
             </div>
             <label for="max-latency" class="col-sm-12 col-md-4 col-lg-2 col-form-label">
-                <span class="lang-field lang-fa">ØªØ§Ø®ÛŒØ± Ù…Ø¬Ø§Ø²:</span>
+                <span class="lang-field lang-fa">تاخیر مجاز:</span>
                 <span class="lang-field lang-en">Max. Latency:</span>
             </label>
             <div class="col-sm-12 col-md-8 col-lg-4">
                 <input class="form-control" type="number" id="max-latency" min="50" max="3000" step="50" value="500">
             </div>
             <label for="max-difference" class="col-sm-12 col-md-4 col-lg-2 col-form-label">
-                <span class="lang-field lang-fa">Ø§Ø®ØªÙ„Ø§Ù ØªØ§Ø®ÛŒØ± Ù…Ø¬Ø§Ø²:</span>
+                <span class="lang-field lang-fa">اختلاف تاخیر مجاز:</span>
                 <span class="lang-field lang-en">Max. Difference:</span>
             </label>
             <div class="col-sm-12 col-md-8 col-lg-4">
@@ -101,7 +101,7 @@
         </div>
         <div class="row my-2">
             <label for="ip-regex" class="col-sm-12 col-md-4 col-lg-2 col-form-label">
-                <span class="lang-field lang-fa">Ø¹Ø¨Ø§Ø±Øª Ù…Ù†Ø¸Ù…:</span>
+                <span class="lang-field lang-fa">عبارت منظم:</span>
                 <span class="lang-field lang-en">Regular expression:</span>
             </label>
             <div class="col-sm-12 col-md-8 col-lg-10">
@@ -110,14 +110,14 @@
         </div>
         <div class="row my-2">
             <label for="ip-include" class="col-sm-12 col-md-4 col-lg-2 col-form-label">
-                <span class="lang-field lang-fa">ÙÙ‚Ø· Ø§Ø² Ø§ÛŒÙ† Ø±Ù†Ø¬ Ø¢ÛŒâ€ŒÙ¾ÛŒ:</span>
+                <span class="lang-field lang-fa">فقط از این رنج آی‌پی:</span>
                 <span class="lang-field lang-en">Ranges to include:</span>
             </label>
             <div class="col-sm-12 col-md-8 col-lg-4">
                 <input type="text" class="form-control" dir="ltr" id="ip-include" placeholder="104.17.166.0/24,172.64.59.0/24">
             </div>
             <label for="ip-exclude" class="col-sm-12 col-md-4 col-lg-2 col-form-label">
-                <span class="lang-field lang-fa">Ø¨Ù‡â€ŒØ¬Ø² Ø§ÛŒÙ† Ø±Ù†Ø¬ Ø¢ÛŒâ€ŒÙ¾ÛŒ:</span>
+                <span class="lang-field lang-fa">به‌جز این رنج آی‌پی:</span>
                 <span class="lang-field lang-en">Ranges to exclude:</span>
             </label>
             <div class="col-sm-12 col-md-8 col-lg-4">
@@ -127,7 +127,7 @@
         <div class="row my-2">
             <div class="btn-group col-xs-3 col-lg-4 my-1" role="group">
                 <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#ip-ranges-modal">
-                    <span class="lang-field lang-fa">Ù…Ø´Ø§Ù‡Ø¯Ù‡â€ŒÛŒ Ø±Ù†Ø¬ Ø¢ÛŒâ€ŒÙ¾ÛŒâ€ŒÙ‡Ø§</span>
+                    <span class="lang-field lang-fa">مشاهده‌ی رنج آی‌پی‌ها</span>
                     <span class="lang-field lang-en">View IP ranges</span>
                 </button>
                 <div class="modal fade" id="ip-ranges-modal" tabindex="-1" aria-labelledby="ip-ranges-modal-label" aria-hidden="true">
@@ -135,7 +135,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="ip-ranges-modal-label">
-                                    <span class="lang-field lang-fa">Ø±Ù†Ø¬ Ø¢ÛŒâ€ŒÙ¾ÛŒâ€ŒÙ‡Ø§</span>
+                                    <span class="lang-field lang-fa">رنج آی‌پی‌ها</span>
                                     <span class="lang-field lang-en">IP ranges</span>
                                 </h5>
                             </div>
@@ -146,11 +146,11 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                    <span class="lang-field lang-fa">Ø¨Ø³ØªÙ†</span>
+                                    <span class="lang-field lang-fa">بستن</span>
                                     <span class="lang-field lang-en">Close</span>
                                 </button>
                                 <button type="button" class="btn btn-primary" onclick="copyToClipboard(cfIPv4.join(`\n`))">
-                                    <span class="lang-field lang-fa">Ú©Ù¾ÛŒ</span>
+                                    <span class="lang-field lang-fa">کپی</span>
                                     <span class="lang-field lang-en">Copy</span>
                                 </button>
                             </div>
@@ -165,18 +165,18 @@
             <div class="btn-group col-xs-3 col-lg-4"></div>
             <div class="btn-group col-xs-6 col-lg-4 my-1" role="group">
                 <button id="btn-start" class="btn btn-success btn-sm rounded-2 fw-bold" disabled type="button" onclick="startScan()">
-                    <span class="lang-field lang-fa">Ø´Ø±ÙˆØ¹</span>
+                    <span class="lang-field lang-fa">شروع</span>
                     <span class="lang-field lang-en">Start</span>
                 </button>&nbsp;
                 <button id="btn-cancel" class="btn btn-outline-secondary btn-sm rounded-2 fw-bold" disabled type="button" onclick="cancelScan()">
-                    <span class="lang-field lang-fa">Ù„ØºÙˆ</span>
+                    <span class="lang-field lang-fa">لغو</span>
                     <span class="lang-field lang-en">Cancel</span>
                 </button>
             </div>
         </div>
         <div class="row my-2 border-bottom border-dark py-3">
             <div id="start-hint" class="col-xs-12 col-lg-5 text-danger fw-bold py-1">
-                <span class="lang-field lang-fa">Ù‚Ø¨Ù„ Ø§Ø² Ø´Ø±ÙˆØ¹ vpn Ø®ÙˆØ¯ Ø±Ø§ Ø®Ø§Ù…ÙˆØ´ Ú©Ù†ÛŒØ¯!</span>
+                <span class="lang-field lang-fa">قبل از شروع vpn خود را خاموش کنید!</span>
                 <span class="lang-field lang-en">Turn off your VPN before start!</span>
             </div>
             <div class="col col-xs-2 col-lg-1 py-2" id="test-no"></div>
@@ -221,31 +221,31 @@
                             #
                         </th>
                         <th style="background-color: #23456a !important; color: white !important;" style="min-width: 110px; font-size: 12px;" ">
-                            <span class="lang-field lang-fa">Ø¢ÛŒâ€ŒÙ¾ÛŒv4</span>
+                            <span class="lang-field lang-fa">آی‌پیv4</span>
                             <span class="lang-field lang-en">IPv4</span>
                         </th>
                         <th style="background-color: #23456a !important; color: white !important;" style="min-width: 110px; font-size: 12px;" ">
-                            <span class="lang-field lang-fa">Ø¢ÛŒâ€ŒÙ¾ÛŒv6</span>
+                            <span class="lang-field lang-fa">آی‌پیv6</span>
                             <span class="lang-field lang-en">IPv6</span>
                         </th>
                         <th style="background-color: #23456a !important; color: white !important;" style="font-size: 12px;">
-                            <span class="lang-field lang-fa">Ø¨ÛŒØ´ÛŒÙ†Ù‡</span>
+                            <span class="lang-field lang-fa">بیشینه</span>
                             <span class="lang-field lang-en">max</span>
                         </th>
                         <th style="background-color:#23456a !important; color: white !important;" style="font-size: 12px;">
-                            <span class="lang-field lang-fa">ÙˆØ§Ø±ÛŒØ§Ù†Ø³</span>
+                            <span class="lang-field lang-fa">واریانس</span>
                             <span class="lang-field lang-en">variance</span>
                         </th>
                         <th style="background-color: #23456a !important; color: white !important;" style="font-size: 12px;">
-                            <span class="lang-field lang-fa">Ù…ÛŒØ§Ù†Ú¯ÛŒÙ†</span>
+                            <span class="lang-field lang-fa">میانگین</span>
                             <span class="lang-field lang-en">average</span>
                         </th>
                         <th style="background-color: #23456a !important; color: white !important;" style="font-size: 12px;">
-                            <span class="lang-field lang-fa">Ú©Ù¾ÛŒIPv4</span>
+                            <span class="lang-field lang-fa">کپیIPv4</span>
                             <span class="lang-field lang-en">CopyIPv4</span>
                         </th>
                         <th style="background-color: #23456a !important; color: white !important;" style="font-size: 12px;">
-                            <span class="lang-field lang-fa">Ú©Ù¾ÛŒIPv6</span>
+                            <span class="lang-field lang-fa">کپیIPv6</span>
                             <span class="lang-field lang-en">CopyIPv6</span>
                         </th>
                     </tr>
