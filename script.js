@@ -219,7 +219,7 @@ async function testIPs(ipList) {
         }
         testNo++;
         let testResult = 0;
-        const url = `https://${ip}:2095/__up`;
+        const url = `https://${ip}:443/__up`;
         //const url = `https://${ip}:443//cdn-cgi/trace`;
         const startTime = performance.now();
         const controller = new AbortController();
